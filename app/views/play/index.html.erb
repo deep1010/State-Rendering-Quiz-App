@@ -1,0 +1,192 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+<h2 id="h2"></h2>
+<div style="margin-left: 30%; margin-top: 5%; margin-right:30% ">
+<div id="question" class="label"></div>
+<form>
+  <input type="checkbox" name="answer" value="A" id="optionA"><span id="answerA" class="options"></span><br>
+  <input type="checkbox" name="answer" value="B" id="optionB"><span id="answerB" class="options"></span><br>
+  <input type="checkbox" name="answer" value="C" id="optionC"><span id="answerC" class="options"></span><br>
+  <input type="checkbox" name="answer" value="D" id="optionD"><span id="answerD" class="options"></span><br>
+  <br>
+  <button type="button" onclick="checkans()" class="w3-btn w3-teal">Submit</button>
+</form>
+<br>
+  <button type="button" onclick="passfunc()" class="w3-btn w3-teal" id="pass">PASS</button>&nbsp;|&nbsp;
+  <button type="button" onclick="func50()" class="w3-btn w3-teal" id="50-50">50-50</button>
+
+<span style="position:fixed;bottom:15px;right:15px;z-index:5; "><%= link_to "Logout", "/logout", class: "al"%></span>
+<span style="position:fixed;bottom:15px;left:15px;z-index:5; "><%= link_to "Home", "/homepage", class: "al"%></span>
+</div>
+<script type="text/javascript">
+loadques();
+loadll();
+var qcount=0;
+var q_details;
+var score=0;
+var rflag=0;
+var loadflag=0;
+var pflag=0;
+var flag50=0;
+var llflag=0;
+function loadll()
+{
+	
+	var llflag;
+	$.ajax({
+		url:"/loadll",
+		method:"GET",
+		data:{gname: "<%= @genre.name %>",sname: "<%= @subgenre.name %>"},
+		success: function(response)
+		{
+			llflag=response.arr;
+			console.log(llflag);
+			pflag=llflag[0];
+			flag50=llflag[1];
+
+		},
+		error: function(response)
+		{
+			console.log("error");
+			console.log(response);
+		},
+		complete: function()
+		{
+			if(pflag==1)
+				document.getElementById("pass").disabled=true;
+			if(flag50==1)
+				document.getElementById("50-50").disabled=true;
+		}
+
+	});
+}
+function loadques()
+{
+	console.log("loading");
+	$.ajax({
+		url:'/getquestion',
+		method:'GET',
+		data:{gname: "<%= @genre.name %>",sname: "<%= @subgenre.name %>"},
+		success: function(response)
+		{
+			x=response.arr;
+			flag=parseInt(x[0].flag);
+			q=x[1].question;
+			temp=x[2].score;
+			score=temp;
+			if(score==0)
+				rflag=1;
+			if(flag===1)
+			{
+				if(temp && rflag==0 && score)
+				{
+					alert("You Are Restoring Quiz");
+					rflag=1;
+				}
+				q_details=q;
+				document.getElementById("question").innerHTML=q.question;
+				document.getElementById("answerA").innerHTML=q.option1;
+				document.getElementById("answerB").innerHTML=q.option2;
+				document.getElementById("answerC").innerHTML=q.option3;
+				document.getElementById("answerD").innerHTML=q.option4;
+			}
+			else
+			{
+				alert("You Have Completed The Quiz\n Your Score Was "+String(score));
+				window.location.href="/homepage";
+			}
+		},
+		error: function(response)
+		{
+			console.log(response);
+		},
+		complete: function()
+		{
+			if(llflag==0)
+			{
+				loadll();
+				llflag=1;
+			}
+		},
+	});
+}
+function updateattempt(flag,pflag,flag50)
+{
+	$.ajax({
+	url:'/updateattempt',
+	method:'GET',
+	data:{flag50: flag50, passflag: pflag, status: parseInt(flag),qid: q_details.id, gname: "<%=@genre.name%>",sname: "<%=@subgenre.name%>"},
+		success: function(response){},
+		error: function(response){console.log("error");console.log(response)},
+		complete: function(){
+			loadques();
+		}
+	});
+}
+function checkans()
+{
+	var curanswer='';
+	var flag=0;
+	if(document.getElementById("optionA").checked)curanswer+='A';
+	if(document.getElementById("optionB").checked)curanswer+='B';
+	if(document.getElementById("optionC").checked)curanswer+='C';
+	if(document.getElementById("optionD").checked)curanswer+='D';
+	document.getElementById("optionA").checked=false;
+	document.getElementById("optionB").checked=false;
+	document.getElementById("optionC").checked=false;
+	document.getElementById("optionD").checked=false;
+	if(curanswer.trim()==q_details.answer.trim())
+	{
+		alert("Correct Answer");
+		flag=1;
+	}
+	else
+	{
+		alert("Wrong Answer");
+		flag=0;
+	}
+	updateattempt(flag,pflag,flag50);
+	console.log("NOW CHANGING QUESTION");	
+}
+function passfunc()
+{
+	updateattempt(1,1,flag50);
+	document.getElementById("pass").disabled=true;
+}
+function func50()
+{
+	flag50=1;
+	ans=q_details.answer.split('');
+	var count=0;
+	while(1)
+	{
+		if(!ans.includes("A"))
+		{
+			document.getElementById("answerA").innerHTML="";
+			count++;
+			if (count==2) {break;}
+		}
+		if(!ans.includes("B"))
+		{
+			document.getElementById("answerB").innerHTML="";
+			count++;
+			if (count==2) {break;}
+		}
+		if(!ans.includes("C"))
+		{
+			document.getElementById("answerC").innerHTML="";
+			count++;
+			if (count==2) {break;}
+		}
+		if(!ans.includes("D"))
+		{
+			document.getElementById("answerD").innerHTML="";
+			count++;
+			if (count==2) {break;}
+		}
+	}
+	document.getElementById("50-50").disabled=true;
+
+}
+</script>

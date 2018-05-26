@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+	<p id="notice"><%= flash[:notice]%></p>
+<% end %>
+<h1>New Question</h1>
+
+<%= render 'form', question: @question %>
+
+&nbsp;<%= link_to 'Back', questions_path,class: "al" %> |
+&nbsp;<%= link_to 'Home', admin_url ,class: "al"%> |
+&nbsp;<%= link_to 'logout', logout_url ,class: "al"%><br>

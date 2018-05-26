@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  &nbsp;<strong class="label">Name: &nbsp; <%= @user.name %></strong>
+  
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user),class: "al" %> |
+<%= link_to 'Back', users_path ,class: "al"%> |
+&nbsp;<%= link_to 'Home', admin_url ,class: "al"%> |
+&nbsp;<%= link_to 'logout', logout_url ,class: "al"%><br>

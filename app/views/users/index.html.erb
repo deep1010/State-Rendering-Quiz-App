@@ -1,0 +1,28 @@
+<h1>Users</h1>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th class="w3-table th" style="color: teal;">Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="label" style="text-align: center; "><%= user.name %></td>
+        <td><%= link_to 'Show', user,class: "al" %></td>
+        <td><%= link_to 'Edit', edit_user_path(user),class: "al" %></td>
+        <td><%= link_to 'Destroy', user, method: :delete,class: "al", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+<br>
+&nbsp;<%= link_to 'New User', new_user_path,class: "al" %> |
+&nbsp;<%= link_to 'Home', admin_url,class: "al" %> |
+&nbsp;<%= link_to 'logout', logout_url,class: "al" %><br>

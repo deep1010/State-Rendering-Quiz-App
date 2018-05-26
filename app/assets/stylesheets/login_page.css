@@ -1,0 +1,77 @@
+#register_table{
+	font-weight:bolder;
+}
+.al:link, .al:visited {
+    background-color: white;
+    color: teal;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.al:hover, .al:active {
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: teal;
+    color: white;
+}
+h1{
+	text-align: center;
+	font-size: 40px;
+	color: white;
+	background-color: teal;
+	padding-top: 20px;
+	padding-bottom: 20px;
+/*	padding: 10px 20px;*/
+}
+h1:hover{
+	color: teal;
+	background-color: white;
+}
+.label{
+	font-size: 20px;
+}
+.options{
+	vertical-align: center;
+	border:none;
+	outline:0;
+	padding:6px 8px;
+	overflow:hidden;
+	text-decoration:none;
+	text-align:center;
+	cursor:pointer;
+	white-space:nowrap;
+	color: teal;
+	font-weight: bold;
+}
+select, option{
+	border:none;
+	outline:0;
+	padding:6px 8px;
+	overflow:hidden;
+	text-decoration:none;
+	background-color:teal;
+	text-align:center;
+	cursor:pointer;
+	white-space:nowrap;
+	color: white;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+body{
+	color: teal;
+}
+#notice{
+	top:5px;
+	font-weight: bold;
+	text-align: center;
+	color: teal;
+}
+#alert{
+	color: teal;
+	font-weight: bold;
+	text-align: center;
+}

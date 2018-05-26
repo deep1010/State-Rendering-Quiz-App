@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Subgenres</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="w3-table th" style="color: teal;">Name</th>
+      <th >Gname</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subgenres.each do |subgenre| %>
+      <tr>
+        <td class="label"><%= subgenre.name %></td>
+        <td class="label"><%= subgenre.gname %></td>
+        <td><%= link_to 'Show', subgenre,class: "al" %></td>
+        <td><%= link_to 'Edit', edit_subgenre_path(subgenre),class: "al" %></td>
+        <td><%= link_to 'Destroy', subgenre, method: :delete,class: "al", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+&nbsp;<%= link_to 'New Subgenre', new_subgenre_path,class: "al" %> |
+&nbsp;<%= link_to 'Home', admin_url,class: "al" %> |
+&nbsp;<%= link_to 'logout', logout_url,class: "al" %><br>

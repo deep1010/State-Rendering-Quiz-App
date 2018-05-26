@@ -1,0 +1,25 @@
+<h1>LeaderBoard</h1>
+<!-- <ul>
+<% @query.each do |l| %>
+	<li><%= l.uname %>&nbsp; <%= l.score%></li>
+	<% end -%> -->
+<br><br>
+<h3 style="text-align: center;color: teal;">Genre: <%=params[:gname]%>&nbsp;&nbsp;&nbsp;&nbsp;Subgenre: <%=params[:sname] %></h3>
+<br>
+<br>
+<table class="w3-table" style="margin-left: 45.5%">
+	<thead>
+	<tr>
+		<th class="w3-table th" style="color: teal;">User</th>
+		<th style="color: teal;">Score</th>
+	</tr>
+	</thead>
+	<% @query.each do |l| %>
+	<tr>
+		<td class="label"><%= l.uname %></td>
+		<td class="label"><%= l.score%></td>
+	</tr>
+	<% end -%>
+</table>
+<span style="position:fixed;bottom:15px;right:15px;z-index:5; "><%= link_to "Logout", "/logout", class: "al"%></span>
+<span style="position:fixed;bottom:15px;left:15px;z-index:5; "><%= link_to "Home", "/homepage", class: "al"%></span>

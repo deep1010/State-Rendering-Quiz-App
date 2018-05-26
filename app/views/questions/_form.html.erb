@@ -1,0 +1,59 @@
+<%= form_with(model: question, local: true) do |form| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :question, class: "label"%>
+   <%= form.text_field :question, id: :question_question, class: "w3-input" ,style: "width:50%;"%>
+  </div>
+
+  <div class="field">
+  <%= form.label :option1, class: "label" %>
+    <%= form.text_field :option1, id: :question_option1, class: "w3-input"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :option2, class: "label" %>
+    <%= form.text_field :option2, id: :question_option2, class: "w3-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option3, class: "label" %>
+    <%= form.text_field :option3, id: :question_option3, class: "w3-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option4, class: "label" %>
+    <%= form.text_field :option4, id: :question_option4, class: "w3-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answer, class: "label" %>
+    <%= form.text_field :answer, id: :question_answer, class: "w3-input" %>
+  </div>
+
+  <div class="field" onchange="fillsgenre()">
+    <%= form.label :gname, class: "label"  %>
+    &nbsp;<%= form.collection_select :gname, Genre.all, :name, :name, {prompt: true},{id: "questions_gname"} %>  
+  </div>
+
+
+  <div class="field" id="sgenrenames">
+  &nbsp;<%= form.label :sname , class: "label"%>
+  &nbsp;<%= form.select :sname, options_for_select([]),{prompt: "Select Subgenre"},{id:"subgenre_list"}%>
+  </div> 
+ <br>
+  <div class="actions">
+    &nbsp;<%= form.submit class: "w3-btn w3-teal"%>
+  </div>
+  <br>
+<% end %>

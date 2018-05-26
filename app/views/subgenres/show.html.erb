@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong class="label">Name: &nbsp;<%= @subgenre.name %></strong>
+</p>
+<p>
+  <strong class="label">Gname: &nbsp;<%= @subgenre.gname %></strong>
+  
+</p>
+&nbsp;<%= link_to 'Edit', edit_subgenre_path(@subgenre),class: "al" %> |
+&nbsp;<%= link_to 'Back', subgenres_path,class: "al" %> |
+&nbsp;<%= link_to 'Home', admin_url,class: "al" %> |
+&nbsp;<%= link_to 'logout', logout_url,class: "al" %><br>

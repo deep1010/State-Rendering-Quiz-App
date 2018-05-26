@@ -1,0 +1,40 @@
+<h1>Quiz Status</h1>
+<br>
+<br>
+
+<h4 style="text-align: center;color: teal;"> Attempted Quizzes</h4>
+
+<div style="text-align: center; ">
+
+	<ul style="list-style: none;">
+		
+		<%	if @attempted%>
+			<% @attempted.each do |at|%>
+				<li class="label">Genre: &nbsp;<%=at.gname%>&nbsp;&nbsp;Subgenre: &nbsp;<%=at.sname%>&nbsp;&nbsp;Score: &nbsp;<%=at.score%></li><br>
+			<% end -%>
+		<% end -%>
+	
+	</ul>
+
+</div>
+
+<br><hr style="margin-left: 25%; width: 50%;font-weight:bold; color: teal"><br>
+
+	
+<h4 style="text-align: center;color: teal;"> Remaining Quizzes</h4>
+
+<div style="text-align: center;">
+
+	<ul style="list-style: none;">
+	
+		<%	if @notattempted%>
+			<% @notattempted.each do |nat|%>
+				<li class="label" >Genre: &nbsp;<%=nat.gname%>&nbsp;&nbsp;Subgenre: &nbsp;<%=nat.name%></li><br>
+			<% end -%>
+		<% end -%>
+	
+	</ul>
+</div>
+
+<span style="position:fixed;bottom:15px;right:15px;z-index:5; "><%= link_to "Logout", "/logout", class: "al"%></span>
+<span style="position:fixed;bottom:15px;left:15px;z-index:5; "><%= link_to "Home", "/homepage", class: "al"%></span>

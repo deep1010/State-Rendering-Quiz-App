@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Qid:</strong>
+  <%= @attempt.qid %>
+</p>
+
+<p>
+  <strong>Uname:</strong>
+  <%= @attempt.uname %>
+</p>
+
+<p>
+  <strong>Gname:</strong>
+  <%= @attempt.gname %>
+</p>
+
+<p>
+  <strong>Sname:</strong>
+  <%= @attempt.sname %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @attempt.score %>
+</p>
+
+<p>
+  <strong>Attempt:</strong>
+  <%= @attempt.attempt %>
+</p>
+
+<p>
+  <strong>Correct:</strong>
+  <%= @attempt.correct %>
+</p>
+
+<%= link_to 'Back', attempts_path %> |
+&nbsp;<%= link_to 'Home', admin_url ,class: "al"%> |
+&nbsp;<%= link_to 'logout', logout_url ,class: "al"%><br>

@@ -1,0 +1,22 @@
+<%= form_with(model: destroy, local: true) do |form| %>
+  <% if destroy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(destroy.errors.count, "error") %> prohibited this destroy from being saved:</h2>
+
+      <ul>
+      <% destroy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Question %>
+    <%= form.text_field :Question, id: :destroy_Question %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

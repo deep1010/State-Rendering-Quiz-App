@@ -1,0 +1,47 @@
+<h1>Play Quiz</h1>
+<div style="margin-top: 5%;text-align: center">
+<%= form_with url: '/play', method: :post, local: true do |form| %>
+ <div class="field" onchange="fillsgenre()">
+    <%= form.label :gname ,"Select Genre",class: "label"%>
+    &nbsp;<%= form.collection_select :gname, Genre.all, :name, :name, {prompt: "Select Genre"},{id: "questions_gname"} %>  
+  </div>
+
+  <div class="field" id="sgenrenames">
+  <%= form.label :sname ,class: "label"%>
+  &nbsp;<%= form.select :sname, options_for_select([]),{prompt: "Select Subgenre"},{id:"subgenre_list"}%>
+  </div> 
+<br>
+  <div class="actions">
+    &nbsp;<%= form.submit "Start Quiz", class: "w3-btn w3-teal"%>
+  </div>
+<% end %>
+
+&nbsp;<button type="button" class="w3-teal w3-btn" onclick="leader()">Leader-Board</button>
+<br>
+<br>
+&nbsp;<button type="button" class="w3-teal w3-btn" onclick="quizstatus()">Quiz-Status</button>
+<br>
+<br>
+&nbsp;<button type="button" class="w3-teal w3-btn" onclick="window.location.href='/chart'">Performance Graph</button>
+
+</div>
+<span style="position:fixed;bottom:15px;right:15px;z-index:5; "><%= link_to "Logout", "/logout", class: "al"%></span>
+<script type="text/javascript">
+  function leader()
+  {
+    if($("#questions_gname").val()=="" || $("#subgenre_list").val()=="")
+    {
+      if(document.getElementById('notice'))
+        document.getElementById('notice').remove();
+      document.body.innerHTML+="<p id=\"notice\">Select Proper Genre & Subgenre</p>";
+    }
+    else
+    {
+    window.location.href="/leader?gname="+$("#questions_gname").val()+"&sname="+$("#subgenre_list").val();
+    }
+  }
+  function quizstatus()
+  {
+    window.location.href="/quizstatus";
+  }
+</script>

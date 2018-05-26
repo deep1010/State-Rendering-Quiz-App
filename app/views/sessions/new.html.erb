@@ -1,0 +1,28 @@
+<div>
+	<% if flash[:alert] %>
+	<p id="notice"><%= flash[:alert]%></p>
+	<% end %>
+	<%= form_tag do %>
+	<h1>Please Login</h1>
+		<br>
+		<br>
+		<table style="vertical-align: center;margin-left: 40%">
+			<tr>
+				<td ><%= label_tag :name,"Name",class: "label"%></td></tr>
+				<tr><td ><%= text_field_tag :name, params[:name],class: "w3-input"%></td>
+			</tr>
+			<tr>
+				<td ><%= label_tag :password,"Password",class: "label"%></td></tr>
+			<tr>	<td ><%= password_field_tag :password, params[:password],class: "w3-input"%></td>
+			</tr>
+		</table>
+		<div id="login_button" style="vertical-align: center;margin-left: 40%">
+			&nbsp;<%= submit_tag :"Login", class: "w3-btn w3-teal"%>
+		</div>
+		<div style="vertical-align: center;margin-left: 40%">
+		<br>
+			<%= link_to 'Register Now', "users/new",class: "al" %>
+		</div>
+	</fieldset> 
+	<% end %>
+</div>

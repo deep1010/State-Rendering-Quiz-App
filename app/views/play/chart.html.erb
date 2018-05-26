@@ -1,0 +1,47 @@
+<h1> Performance Graph</h1>
+<div id="barchart" style="vertical-align: center;text-align: center;margin-left: 38%;margin-right: 30%; margin-top: 10%;"></div>
+<div id="piechart" style="vertical-align: center;text-align: center;margin-left: 38%;margin-right: 30%; margin-top: 5%;"></div>
+
+<span style="position:fixed;bottom:15px;right:15px;z-index:5; "><%= link_to "Logout", "/logout", class: "al"%></span>
+<span style="position:fixed;bottom:15px;left:15px;z-index:5; "><%= link_to "Home", "/homepage", class: "al"%></span>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+var array
+function getdata()
+{
+$.ajax({
+  url:"/getchart",
+  method:"GET",
+  success:function(response)
+  {
+    console.log(response);
+    array=response;
+  },
+  error:function(response)
+  {
+    console.log("error");
+    console.log(response);
+  },
+  complete: function()
+  {
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+  },
+});
+}
+
+getdata();
+
+function drawChart() {
+  var data = google.visualization.arrayToDataTable(array);
+
+
+  var options = {'title':'Quiz Performance', 'width':400, 'height':400,'colors':['teal','black']};
+
+  var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+  chart.draw(data, options);
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+ }
+</script>

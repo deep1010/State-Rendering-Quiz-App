@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Genres</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="w3-table th" style="color: teal;">Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td class="label"><%= genre.name %></td>
+        <td><%= link_to 'Show', genre,class: "al" %></td>
+        <td><%= link_to 'Edit', edit_genre_path(genre) ,class: "al"%></td>
+        <td><%= link_to 'Destroy', genre, method: :delete,class: "al", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+&nbsp;<%= link_to 'New Genre', new_genre_path,class: "al" %> |
+&nbsp;<%= link_to 'Home', admin_url ,class: "al"%> |
+&nbsp;<%= link_to 'logout', logout_url,class: "al" %><br>

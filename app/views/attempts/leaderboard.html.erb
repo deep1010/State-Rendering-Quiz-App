@@ -1,0 +1,12 @@
+<h1> Admin Leaderboard</h1>
+<% @subgenres.each do |sgenre|%>
+<% @leader=Attempt.where(:gname => sgenre.gname, :sname => sgenre.name).sort_by &:score %>
+<% @leader=@leader.reverse %>
+<% if @leader[0] %>
+<br>
+<div style="text-align: center; color: teal;" >Genre: <%= sgenre.gname%> &nbsp;Subgenre: <%= sgenre.name%> &nbsp;User: <%= @leader[0].uname %>&nbsp;Score: <%=@leader[0].score%></div><br>
+<% end -%>
+<% end -%>
+<div style="text-align: center;">
+&nbsp;<%= link_to 'Home', admin_url,class: "al" %> |
+&nbsp;<%= link_to 'logout', logout_url,class: "al" %><br></div>

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="w3-table th" style="color: teal;">Question</th>
+      <th style="color: teal;">Option1</th>
+      <th style="color: teal;">Option2</th>
+      <th style="color: teal;">Option3</th>
+      <th style="color: teal;">Option4</th>
+      <th style="color: teal;">Answer</th>
+      <th style="color: teal;">Gname</th>
+      <th style="color: teal;">Sname</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td class="label"><%= question.question %></td>
+        <td class="label"><%= question.option1 %></td>
+        <td class="label"><%= question.option2 %></td>
+        <td class="label"><%= question.option3 %></td>
+        <td class="label"><%= question.option4 %></td>
+        <td class="label"><%= question.answer %></td>
+        <td class="label"><%= question.gname %></td>
+        <td class="label"><%= question.sname %></td>
+        <td ><%= link_to 'Show', question ,class: "al"%></td>
+        <td><%= link_to 'Edit', edit_question_path(question) ,class: "al"%></td>
+        <td><%= link_to 'Destroy', question, method: :delete,class: "al", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_question_path,class: "al" %> |
+&nbsp;<%= link_to 'Home', admin_url,class: "al" %> |
+&nbsp;<%= link_to 'logout', logout_url,class: "al" %><br>

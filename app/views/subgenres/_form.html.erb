@@ -1,0 +1,27 @@
+<%= form_with(model: subgenre, local: true) do |form| %>
+  <% if subgenre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subgenre.errors.count, "error") %> prohibited this subgenre from being saved:</h2>
+
+      <ul>
+      <% subgenre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, class: "label"%>
+    <%= form.text_field :name, id: :subgenre_name ,class: "w3-input"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :gname, class: "label" %><br>
+    &nbsp;<%= form.collection_select :gname, Genre.all, :name, :name, prompt: true %>
+  </div>
+  <br>
+  <div class="actions">
+    &nbsp;<%= form.submit class: "w3-btn w3-teal"%>
+  </div>
+<% end %>

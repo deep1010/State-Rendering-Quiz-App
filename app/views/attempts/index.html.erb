@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Attempts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Qid</th>
+      <th>Uname</th>
+      <th>Gname</th>
+      <th>Sname</th>
+      <th>Score</th>
+      <th>Attempt</th>
+      <th>Correct</th>
+      <th>Pass</th>
+      <th>50-50</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attempts.each do |attempt| %>
+      <tr>
+        <td class="label"><%= attempt.qid %></td>
+        <td class="label"><%= attempt.uname %></td>
+        <td class="label"><%= attempt.gname %></td>
+        <td class="label"><%= attempt.sname %></td>
+        <td class="label"><%= attempt.score %></td>
+        <td class="label"><%= attempt.attempt %></td>
+        <td class="label"><%= attempt.correct %></td>
+        <td class="label"><%= attempt.llpass %></td>
+        <td class="label"><%= attempt.ll50 %></td>
+        <td class="label"><%= link_to 'Destroy', attempt, method: :delete,class: "al" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+&nbsp;<%= link_to 'Home', admin_url ,class: "al"%> |
+&nbsp;<%= link_to 'logout', logout_url ,class: "al"%><br>

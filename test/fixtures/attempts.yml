@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qid: 1
+  uname: MyString
+  gname: MyString
+  sname: MyString
+  score: 1
+  attempt: 1
+  correct: 1
+
+two:
+  qid: 1
+  uname: MyString
+  gname: MyString
+  sname: MyString
+  score: 1
+  attempt: 1
+  correct: 1

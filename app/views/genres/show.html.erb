@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  &nbsp;<strong class="label">Name:  &nbsp;<%= @genre.name %></strong> 
+</p>
+
+&nbsp;<%= link_to 'Edit', edit_genre_path(@genre),class: "al" %> |
+&nbsp;<%= link_to 'Back', genres_path,class: "al" %> |
+&nbsp;<%= link_to 'Home', admin_url ,class: "al"%> |
+&nbsp;<%= link_to 'logout', logout_url ,class: "al"%><br>
